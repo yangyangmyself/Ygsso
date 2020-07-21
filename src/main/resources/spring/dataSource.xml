@@ -1,0 +1,51 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+    xsi:schemaLocation="   
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd    
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<!--  <value>${spring.cloud.config.uri}/${spring.cloud.config.name}/${spring.cloud.config.profile}</value>-->
+			 <value>classpath:spring/jdbc.properties</value>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+<!-- 
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="${pool.initialSize}" />
+		<property name="maxActive" value="${pool.maxActive}" />
+		<property name="maxIdle" value="${pool.maxIdle}" />
+		<property name="maxWait" value="${pool.maxWait}" />
+		<property name="defaultAutoCommit" value="${pool.defaultAutoCommit}" />
+	</bean>	
+ -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="${pool.initialSize}" />
+		<property name="maxActive" value="${pool.maxActive}" />
+		<property name="maxIdle" value="${pool.maxIdle}" />
+		<property name="maxWait" value="${pool.maxWait}" />
+		<property name="defaultAutoCommit" value="${pool.defaultAutoCommit}" />
+	</bean>		
+	<!-- 引入支持jdbc的事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>	
+
+</beans>

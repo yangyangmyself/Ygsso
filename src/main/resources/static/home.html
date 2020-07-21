@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta name="description" content="">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link href="./assets/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="assets/jquery/jquery.min.js"></script>
+  <title>业务应用</title>
+</head>
+<body ms-controller="main">
+	<div class="container">
+			<h2>你已成功登录</h2>
+			<p>当前用户名是:<span id="username"></span></p>
+			<p>当前的权限角色是:<span id="userRoles"></span></p>
+			<p></p>
+			<p><a href="oauth/logout">登出</a></p>
+	</div>
+	<script type="text/javascript">
+		$.get("./user").then(function(result){
+			//alert(JSON.stringify(result));
+			$("#username").html(result["name"]);
+			$("#userRoles").html(JSON.stringify(result["authorities"]));
+		});	
+	</script>
+</body>
+</html>

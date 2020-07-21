@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>应用登录</title>
+<base href="./">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel='stylesheet prefetch' href='theme/default/all.css'>
+
+<style>
+	body {
+		padding-top: 0;
+	}
+	
+	.user-control-nav {
+		margin-bottom: 20px;
+	}
+	
+	.page-content {
+		padding: 0;
+	}
+	
+	.text-bold {
+		font-weight: bold;
+	}
+	
+	.container {
+		margin: 10% auto 0 auto
+	}
+	
+	#login {
+		margin: 0 auto;
+		width: 500px;
+		min-height: 230px;
+		background-color: #fff;
+		border: 1px solid #dfdfdf;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		-moz-box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.15);
+		-webkit-box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.15);
+		box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.15)
+	}
+	
+	#login .panel-head {
+		min-height: 55px;
+		background-color: #edf3fe;
+		border-bottom: 1px solid #dfdfdf;
+		position: relative
+	}
+	
+	#login .panel-head h4 {
+		margin: 0 0 0 20px;
+		padding: 0;
+		line-height: 55px;
+		font-size: 14px
+	}
+	
+	#login .panel-actions {
+		float: right;
+		position: absolute;
+		right: 15px;
+		top: 12px;
+		padding: 0
+	}
+	
+	#login .panel-actions .dropdown {
+		display: inline-block;
+		margin-right: 2px
+	}
+	
+	#login #submit {
+		min-width: 100px;
+	}
+	
+	#loginForm {
+		padding: 20px 20px;
+	}
+	
+	.table-form th,.table-form td {
+		padding: 8px 5px
+	}
+	
+	.checkbox {
+		display: inline-block;
+		padding-left: 80px;
+	}
+	
+	.notice {
+		padding: 10px;
+	}
+</style>
+
+</head>
+<body>
+	<div class="container">
+		<div id="login">
+			<div class="panel-head">
+				<h4>SaaS 应用门户登录</h4>
+				<div class="panel-actions">
+
+				</div>
+			</div>
+			<div class="panel-body" id="loginForm">
+				<form method="post" target="_self" class="form-condensed" action="./sso/login">
+					<div id="responser" class="text-center"></div>
+					<div class="row">
+						<div class="col-xs-4 text-center">
+							<img src="theme/default/images/main/logo.jpg">
+						</div>
+						<div class="col-xs-8">
+							<table class="table table-form">
+								<tbody>
+									<tr>
+										<th>用户名</th>
+										<td>
+											<input type="text" name="username" id="username" value="admin" class="form-control" placeholder="请输入用户名">
+										</td>
+									</tr>
+									<tr>
+										<th>密码</th>
+										<td>
+											<input type="password" name="password" id="password" 	value="123456" class="form-control" placeholder="请输入密码">
+										</td>
+									</tr>
+									<tr>
+										<th></th>
+										<td>
+											<input type="submit"  id="submit" target="_self" class="btn btn-primary" data-loading="稍候..." value="登录">
+											<input 	type="hidden" name="referer"  id="referer"	value="#"> 
+											<label class="checkbox-inline">
+											<input type="checkbox"	name="keepLogin[]" value="on" id="keepLoginon"> 保持登录</label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="notice text-center"></div>
+	</div>
+
+</body>
+</html>

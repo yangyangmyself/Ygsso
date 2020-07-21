@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="登陆界面" />
+    <title>常德市公安局车辆缉查管理平台</title>
+    <link rel="stylesheet" href="css/pki-login.css">
+</head>
+
+<body>
+
+    <div id="login" class="all">
+        <div class="head"></div>
+        <div class="login">
+             
+            <!-- https://192.168.40.208:8443/ssov6/oauth/authorize?client_id=SheChe&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2F%23%2Fsso%2Foauth%2Flogin%2Fcheckcode%3Freturn_url%3D%2Fdesktop%2Fconsole%2Findex&logout_uri=http%3A%2F%2Flocalhost%3A4200%2F%23%2Flogout
+             -->
+            <!--form action="https://localhost:8443/ssov6/sso/ssllogin" method="post" class="loginform" style=""-->
+            <form action="https://192.168.40.208:8443/ssov6/oauth/authorize" method="post" class="loginform" style="">
+                <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk="/>
+                <input type="hidden" name="client_id" value="SheChe"/>
+                <input type="hidden" name="response_type" value="code"/>
+                <input type="hidden" name="redirect_uri" value="http://localhost:4200/%23/desktop/console/index"/>
+                <div class="img">
+                    <div class="pki">PKI</div>
+                    <button type="submit" class="dengl">点击登录</button>
+                </div>
+            </form>
+            
+            <!--form action="https://localhost:8443/ssov6/oauth/authorize?response_type=code&client_id=SheChe&redirect_uri=http://localhost:8066" method="post" class="loginform" style="">
+                <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk=">
+                <div class="img">
+                    <div class="pki">PKI</div>
+                    <button type="submit" class="dengl">点击登录</button>
+                </div>
+            </form-->
+        </div>
+        <div class="tbody">
+            <ul>
+                <ul>
+                    <li>版权所有：常德公安局&nbsp;&nbsp;</li>
+                    <li> 技术支持：广州阳光耐特电子有限公司</li>
+                    <li>版本说明:请使用谷歌浏览器</li>
+                    <li>推荐使用分辨率 1366 × 768</li>
+                    <li>浏览器下载：</span>
+                        <a href="anzhuangbao/chrome49.exe" style=" text-decoration: underline;">
+                            <span id="chromexz">谷歌</span>
+                        </a>
+
+                    </li>
+                </ul>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(document).ready(function () {
+                //判断页面是否有错误信息
+                var error = getQueryString("error");
+                if (error != null && error != "") {
+                    alert(decodeURI(error));
+                }
+
+                var userAgent = navigator.userAgent;
+                var isOpera = userAgent.indexOf("Opera") > -1;
+                if (userAgent.indexOf("Chrome") > -1) {
+                    if (window.navigator.webkitPersistentStorage.toString().indexOf('DeprecatedStorageQuota') > -1) {
+                        return "Chrome";
+                    } else {
+                        return "360";
+                    }
+                } else {
+                    if (confirm("浏览器不支持，是否下载谷歌？")) {
+                        $("#chromexz").click();
+                    }
+                }
+            });
+
+            $('#login #password').focus(function () {
+                $('#owl-login').addClass('password');
+            }).blur(function () {
+                $('#owl-login').removeClass('password');
+            });
+
+            function getQueryString(name) {
+                var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+                if (result == null || result.length < 1) {
+                    return "";
+                }
+                return result[1];
+            }
+            $("#mmdl1").click(function () {
+                debugger
+                window.location.href = "/ssov6/login/index.html";
+
+            });
+            /* $("#dl").click(function(){
+                if($("input[name='lx']").val() === "pik"){
+            $("form").attr("action","../sso/login1").submit();
+            };
+            $("form").submit();
+            }); */
+        });
+    </script>
+    <!-- </div> -->
+    <!-- end -->
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+body{
+	 margin:0;padding:0;
+}
+ul li{	
+    list-style-type:none;
+}
+
+.all{
+    width: 100%;
+    /* height: 768px; */
+    height: -webkit-fill-available;
+    background-image: url('../images/bng.jpg');
+    /*display: flex;*/
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    background-repeat: round;
+}
+.head{
+    background-image: url('../images/login.png');
+    width: 1000px;
+    height: 534px;
+    position: absolute;
+    margin-left: calc(22% - 95px);
+    margin-top: 126px;
+    opacity:0.8;
+}
+
+.login{
+    width: 800px;
+    height: 170px;
+    position: absolute;
+    margin-top: 240px;
+    margin-left: calc(20% - -14px);
+}
+.tbody{
+    width: 520px;
+    height: 53px;
+    position: absolute;
+    margin-top: 580px;
+    text-align: center;
+    font-size: 13px;
+    margin-left: calc(25% - -45px);
+}
+.img{
+    width: 401px;
+    height: 65px;
+    background-image: url('../images/KPI.png');
+    margin-left: 190px;
+    margin-top: 66px;
+}
+.pki{
+    position: relative;
+    left: 201px;
+    top: 10px;
+    font-size: 16px;
+    color: white;
+}
+.dengl{
+    position: relative;
+    left: 175px;
+    top: 13px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    background-color:#83c6ef;
+}

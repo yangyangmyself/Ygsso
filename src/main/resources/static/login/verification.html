@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="登陆界面" />
+<title>广东省公安涉车综合应用系统</title>
+<link rel="stylesheet" href="css/login1.css">
+</head>
+<body>
+<!-- begin -->
+<!-- <div id="login"> -->
+	<div class="logo" >
+		<image src="images/police-sign.png" style="margin-top: -10px; margin-right: 4px;" />
+		<span>广东省公安涉车综合应用系统</span>
+	</div>
+    <!-- <div class="wrapper" > -->
+    <div id="login" style="position: absolute;">
+    <image style="width:100%;height:100%" src="images/bg.gif" />
+        <form action="../sso/login" method="post"  class="loginform" style="">
+            <!-- <div class="tab-box">
+            	<ul class="tab-nav">
+            	<li style="width: 40%;" id="pkidl1">PKI登录</li>
+            	<li style="width: 20%;">|</li>
+				<li style="width: 40%;" id="mmdl1">密码登录</li>
+            	</ul>
+            </div> -->
+            <div class="pad">
+                <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk=">
+                <div class="control-group">
+                    <div class="controls" style="width: 100%;height: 40px;">
+                    <div class="userimg" style="background-color:#d0c8c8;float:left; height:40px;width:40px;">
+                    	<image src="images/username.png" style="margin: 10px;position:absolute;"></image>
+                    </div>
+                    <!-- <div style="width: 65%;">
+                    	<input type="text" name="username" id="username" placeholder="username" tabindex="1" autofocus="autofocus" class="form-control input-medium">
+                    </div> -->
+                    <input type="text" name="phone" id="phone" placeholder="请输入手机号码" style="float:left;" class="form-control" />
+                        <!-- <input type="text" name="username" id="username" placeholder="username" tabindex="1" autofocus="autofocus" class="form-control input-medium"> -->
+                        <div style="background-color:#d0c8c8;float:left; height:40px;width:80px;">
+                    <!-- style="background-color:#d0c8c8;float:left; height:40px;width:40px;" -->
+                    <span class="msgs">获取验证码</span>
+                    </div>
+                    </div>
+                    
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+					<div class="userimg" style="background-color:#d0c8c8;float:left; height:40px;width:40px;">
+                    	<image src="images/password.png" style="margin: 10px;position:absolute;"></image>
+                    </div> 
+                    <input id="verification" type="text" name="verification" placeholder="请输入验证码" tabindex="2" class="form-control input-medium">
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions" style="margin-top: 10px">
+            	<!-- <a href="#" tabindex="5" class="btn pull-left btn-link text-muted"></a>
+            	<a href="#" tabindex="6" class="btn btn-link text-muted"></a> -->
+                <!-- <button type="submit" onclick="clickHandler()" tabindex="4" class="btn btn-primary">登&nbsp;&nbsp;录</button> -->
+                <button type="button" onclick="clickHandler()"  tabindex="4" class="btn btn-primary">验&nbsp;&nbsp;证</button>
+               <!--  <button type="button" onclick="clickHandler()" id="dl" tabindex="4" class="btn btn-primary">登&nbsp;&nbsp;录</button> -->
+				 <!-- <p id="pp" style="line-height: 35px"><span style="color: aliceblue" id="zt">浏览器下载：</span><a   href="anzhuangbao/chrome49.exe" style=" text-decoration: underline;"><span id="chromexz">谷歌</span></a><a id="chorme64" href="anzhuangbao/360se10.exe"  style="text-decoration: underline;">360</a></p>
+				 <p style="color:aliceblue">版本说明:请使用谷歌浏览器<br/>
+推荐使用分辨率 1366 × 768</p> -->
+            </div>
+        </form>
+    </div>
+    <div id="bottom" style="position: fixed;bottom: 0;z-index: 3; width: 100%;
+    height: 30px;
+    color: #666;
+    background-color: #e1e1e1;
+    border-top: 1px solid #b4b4b4;
+    line-height: 30px;
+    text-align: center;">
+    	<span>广东省公安厅情报中心 联系电话：02083922511  系统运维：18922222110</span>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+    /* $(document).ready(function(){
+	  $("body").load(function(){
+	    debugger;
+    	var phone = getUrlParam("phone");
+    	debugger;
+	  });
+	}); */
+    /* $('body').load(function () {
+    	debugger;
+    	var phone = getUrlParam("phone");
+    	debugger;
+    	$('body').append('div has load');
+    }); */
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    };
+    function clickHandler() {
+    	debugger;
+    	var pass=$("input[name='password']").val();
+    	var verification =$("input[name='verification']").val();
+    	/* if((pass == null || pass == undefined || pass == "") && (username == null || username == undefined || username == "")){
+    		alert("你输入的验证码为空，请重新输入");
+    		return false;
+    	} */
+	  	if(verification == null || verification == undefined || verification == ""){
+    		alert("请输入您的验证码为空");
+    		return false;
+    	}
+    	/* if(pass == null || pass == undefined || pass == ""){
+    		alert("请输入您的登录密码");
+    		return false;
+    	} */
+    	/*$("form").attr("action","../sso/login").submit();*/
+    	$.ajax({
+           url: '/ssov6/user/get/verification?verification='+verification,
+           type: 'POST',
+           cache: false,
+           dataType: 'JSON',
+           async : true,
+           data: {},
+           success: function (data) {
+               console.log(data);
+               debugger;
+               if (data.resultCode != "0") {
+                   alert("验证码输入错误");
+                   return;
+               }
+               /* $("form").attr("action", "../sso/login").submit(); */
+               window.location.href = "http://localhost:4200/#/desktop/console/index";
+           }
+       });
+	 }
+    $(function() {
+    	$(document).ready(function () {
+    		//判断页面是否有错误信息
+    		debugger;
+	    	var phone = getUrlParam("phone");
+	    	if(phone == null || phone == undefined || phone == "" || phone == "null"){
+	    		
+	    	}else {
+	    		$("input[name='phone']").val(phone);
+	    		$("input[name='phone']").attr("readonly",true);
+	    		debugger;
+	    	}
+	    	/* $('.input1').val('value567'); */
+	    	
+   		    var error = getQueryString("error");
+   		    if (error != null && error != "") {
+   			    alert(decodeURI(error));
+   		    }
+    		
+    		 var userAgent = navigator.userAgent;
+    		    var isOpera = userAgent.indexOf("Opera") > -1;    		    
+    		    if (userAgent.indexOf("Chrome") > -1) {
+    		        if (window.navigator.webkitPersistentStorage.toString().indexOf('DeprecatedStorageQuota') > -1) {    		          
+    		        	return "Chrome";
+    		        } else {    		        	
+    		            return "360";
+    		        }
+    		    }else{
+    		    	 if(confirm("浏览器不支持，是否下载谷歌？")){
+    	                    $("#chromexz").click();
+    	                 }
+    		    }
+		});
+
+        $('#login #password').focus(function() {
+            $('#owl-login').addClass('password');
+        }).blur(function() {
+            $('#owl-login').removeClass('password');
+        });
+
+});
+    $("#pkidl1").click(function () {
+        debugger
+        window.location.href = "/ssov6/login/pkilogin.html";
+
+    });
+    $(function  () {
+	//获取短信验证码
+	var validCode=true;
+	$(".msgs").click (function  () {
+		var time=20;
+		//var time=900;
+		debugger;
+		var code=$(this);
+		if (validCode) {
+			var phone =$("input[name='phone']").val();
+			$.ajax({
+                url: '/ssov6/user/get/sms?phone='+phone,
+                type: 'POST',
+                cache: false,
+                dataType: 'JSON',
+                async : true,
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                    debugger;
+                    if (data.resultCode != "0") {
+                        alert("验证码输入错误");
+                        return;
+                    }
+                    /* $("form").attr("action", "../sso/login").submit(); */
+                }
+            });
+			validCode=false;
+			code.addClass("msgs1");
+		var t=setInterval(function  () {
+			time--;
+			code.html(time+"秒");
+			if (time==0) {
+				clearInterval(t);
+			code.html("重新获取");
+				validCode=true;
+			code.removeClass("msgs1");
+
+			}
+		},1000)
+		}
+	})
+});
+$("#mmdl1").click(function () {
+$(".pad").html("");
+$(".pad").html('  <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk=">'
++'<input type="hidden" name="lx" value="sso">'
+    + ' <div class="control-group">'
+    + '  <div class="controls">'
+    + '      <div class="userimg" style="background-color:#d0c8c8;float:left; height:40px;width:40px;">'
+    + '       <image src="images/username.png" style="margin: 10px;position:absolute;"></image>'
+    + '   </div>'
+    + '   <input type="text" name="username" id="username" placeholder="username" tabindex="1" autofocus="autofocus" class="form-control input-medium">'
+    + ' </div>'
+    + '  </div>'
+    + ' <div class="control-group">'
+    + '   <div class="controls">'
+    + '      <div class="userimg" style="background-color:#d0c8c8;float:left; height:40px;width:40px;">'
+    + '       <image src="images/password.png" style="margin: 10px;position:absolute;"></image>'
+    + '   </div>'
+    + '  <input id="password" type="password" name="password" placeholder="password" tabindex="2" class="form-control input-medium">'
+    + ' </div>'
+    + ' </div>');
+});
+    function getQueryString(name) {
+    	
+   		var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+        if (result == null || result.length < 1) {
+            return "";
+        }
+        return result[1];
+
+    }
+/* $("#dl").click(function(){    
+    if($("input[name='lx']").val() === "pik"){
+$("form").attr("action","../sso/login1").submit();
+};
+$("form").submit();
+}); */
+
+    </script>
+<!-- </div> -->
+<!-- end -->
+</body>
+</html>

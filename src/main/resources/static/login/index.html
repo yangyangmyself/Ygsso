@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="登陆界面" />
+    <title>常德市公安局车辆缉查管理平台</title>
+    <link rel="stylesheet" href="css/cd-login.css">
+</head>
+
+<body>
+    <div id="login" class="all">
+        <div class="head"></div>
+        <div class="login">
+            <form action="../sso/login" method="post" style="">
+                <div class="login-body">
+                    <ul class="icon">
+                        <li>
+                            <span style="font-weight: bold;">用户名:</span>
+                            <input type="text" class="control" style="width: 200px;" name="username" id="username" placeholder="username"
+                                tabindex="1">
+                        </li>
+                        <li>
+                            <span style="font-weight: bold;">密码:</span>
+                            <input type="password" id="password" name="password" style="width: 200px;" placeholder="password" class="control"
+                                tabindex="2">
+                        </li>
+                    </ul>
+                </div>
+                <div class="login-btn">
+                    <ul class="icon1">
+                        <li>验证码:
+                            <input type="text" class="control1" name="verify" id="verify">
+                        </li>
+                        <li>
+                            <img onclick="changeImg();" class="img" src="/ssov6/getVerify">
+                        </li>
+                        <li>
+                            <button type="button" onclick="clickHandler();" class="btn-primary1">账号登录</button>
+                        </li>
+                        <li>
+                            <div id="pkidl1">PKI登录</div>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="tbody">
+            <ul>
+                <li>版权所有：常德公安局&nbsp;&nbsp;</li>
+                <li> 技术支持：广州阳光耐特电子有限公司</li>
+                <li>版本说明:请使用谷歌浏览器</li>
+                <li>推荐使用分辨率 1366 × 768</li>
+                <li>浏览器下载：</span>
+                    <a href="anzhuangbao/chrome49.exe" style=" text-decoration: underline;">
+                        <span id="chromexz">谷歌</span>
+                    </a>
+                  
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        function changeImg() {
+            $(".img").attr("src", "/ssov6/getVerify?p" + Math.random());
+        }
+
+        function clickHandler() {
+            var pass = $("input[name='password']").val();
+            var username = $("input[name='username']").val();
+            if ((pass == null || pass == undefined || pass == "") && (username == null || username == undefined || username == "")) {
+                alert("你输入的用户名或密码有误，请重新输入");
+                return false;
+            }
+            if (username == null || username == undefined || username == "") {
+                alert("请输入您的登录账号");
+                return false;
+            }
+            if (pass == null || pass == undefined || pass == "") {
+                alert("请输入您的登录密码");
+                return false;
+            }
+
+            var verify = $("input[name='verify']").val();
+            $.ajax({
+                url: '/ssov6/checkImage',
+                type: 'POST',
+                cache: false,
+                dataType: 'JSON',
+                data: {},
+                success: function (data) {
+                    console.log(data);
+                    if (data != verify) {
+                        alert("验证码输入错误");
+                        return;
+                    }
+                    $("form").attr("action", "../sso/login").submit();
+                }
+            });
+
+
+
+
+        }
+        function check() {
+
+        }
+
+        $(function () {
+            $(document).ready(function () {
+                //判断页面是否有错误信息
+                var error = getQueryString("error");
+                if (error != null && error != "") {
+                    alert(decodeURI(error));
+                }
+
+                var userAgent = navigator.userAgent;
+                var isOpera = userAgent.indexOf("Opera") > -1;
+                if (userAgent.indexOf("Chrome") > -1) {
+                    if (window.navigator.webkitPersistentStorage.toString().indexOf('DeprecatedStorageQuota') > -1) {
+                        return "Chrome";
+                    } else {
+                        return "360";
+                    }
+                } else {
+                    if (confirm("浏览器不支持，是否下载谷歌？")) {
+                        $("#chromexz").click();
+                    }
+                }
+            });
+
+            $('#login #password').focus(function () {
+                $('#owl-login').addClass('password');
+            }).blur(function () {
+                $('#owl-login').removeClass('password');
+            });
+
+        });
+        $("#pkidl1").click(function () {
+            window.location.href = "/ssov6/login/pkilogin.html";
+
+        });
+        $("#mmdl1").click(function () {
+            $(".pad").html("");
+            $(".pad").html('  <input type="hidden" name="_csrf" value="9IAtUxV2CatyxHiK2LxzOsT6wtBE6h8BpzOmk=">'
+                + '<input type="hidden" name="lx" value="sso">'
+                + ' <div class="control-group">'
+                + '  <div class="controls">'
+                + '      <div class="userimg" style="background-color:#d0c8c8;float:left; height:40px;width:40px;">'
+                + '       <image src="images/username.png" style="margin: 10px;position:absolute;"></image>'
+                + '   </div>'
+                + '   <input type="text" name="username" id="username" placeholder="username" tabindex="1" autofocus="autofocus" class="form-control input-medium">'
+                + ' </div>'
+                + '  </div>'
+                + ' <div class="control-group">'
+                + '   <div class="controls">'
+                + '      <div class="userimg" style="background-color:#d0c8c8;float:left; height:40px;width:40px;">'
+                + '       <image src="images/password.png" style="margin: 10px;position:absolute;"></image>'
+                + '   </div>'
+                + '  <input id="password" type="password" name="password" placeholder="password" tabindex="2" class="form-control input-medium">'
+                + ' </div>'
+                + ' </div>');
+        });
+        function getQueryString(name) {
+            var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+            if (result == null || result.length < 1) {
+                return "";
+            }
+            return result[1];
+
+        }
+/* $("#dl").click(function(){    
+    if($("input[name='lx']").val() === "pik"){
+$("form").attr("action","../sso/login1").submit();
+};
+$("form").submit();
+}); */
+
+    </script>
+    <!-- </div> -->
+    <!-- end -->
+</body>
+
+</html>

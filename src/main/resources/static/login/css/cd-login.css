@@ -1,0 +1,107 @@
+body{
+	 margin:0;padding:0;
+}
+ul li{	
+    list-style-type:none;
+}
+.all{
+    width: 100%;
+   /*  height: 768px; */
+    height: -webkit-fill-available;
+    background-image: url('../images/bng.jpg');
+    /*  display: flex; */
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    background-repeat: round;
+}
+.head{
+    background-image: url('../images/login.png');
+    width: 1000px;
+    height: 534px;
+    position: absolute;
+    margin-left: calc(22% - 95px);
+    margin-top: 126px;
+    opacity:0.8;
+}
+
+.login{
+    width: 800px;
+    height: 170px;
+    position: absolute;
+    margin-top: 240px;
+    margin-left: calc(20% - -14px);
+}
+
+.login-body{
+    height: 60px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.icon li{
+    float: left;
+    line-height: 60px;
+    font-size: 16px;
+    letter-spacing:1px;
+    margin-left: 30px;
+}
+.control{
+    width: 225px;
+    height: 38px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size:16px;
+}
+.login-btn{
+    width: 680px;
+    height: 60px;
+    margin-left: 50px;
+    margin-top: 36px;
+}
+.control1{
+    width: 146px;
+    height: 38px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size:16px;
+}
+.img{
+  width: 80px;
+  height: 30px;
+  display: inline-block;
+  margin: 0px 10px;
+  cursor:pointer;
+}
+.btn-primary1{
+    background-image: url('../images/account_login.png');
+    width: 88px;
+    height: 32px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 32px;
+}
+
+#pkidl1{
+	background-image: url('../images/PKI_login.png');
+	width: 88px;
+    height: 32px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 32px;
+}
+.icon1 li{
+    float: left;
+    font-size: 16px;
+    letter-spacing:1px;
+    margin-left: 30px;
+}
+
+.tbody{
+    width: 520px;
+    height: 53px;
+    position: absolute;
+    margin-top: 561px;
+    text-align: center;
+    font-size: 13px;
+    margin-left: calc(25% - -45px);
+}
